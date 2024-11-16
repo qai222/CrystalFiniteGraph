@@ -4,7 +4,7 @@ from collections import Counter
 import networkx as nx
 import numpy as np
 from pydantic import BaseModel
-from wrapt_timeout_decorator import timeout
+
 from .qgraph import LQG, _allowed_voltages, multigraph_cycles
 
 _allowed_cycle_voltage_sums = tuple(itertools.product(range(-2, 3), repeat=3))
@@ -139,6 +139,7 @@ class LqgFeatureSet(BaseModel):
     @classmethod
     def from_lqg(cls, lqg: LQG):
         return calculate_features(lqg)
+
 
 def calculate_node_degree_count(g: nx.MultiGraph):
     degree_seq = (d for n, d in g.degree)
