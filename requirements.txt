@@ -1,0 +1,7 @@
+scikit-optimize
+matplotlib
+networkx
+pymatgen
+loguru
+pydantic
+xgboost

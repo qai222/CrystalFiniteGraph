@@ -1,1 +1,0 @@
-{"best_parameters": {"colsample_bytree": 0.28854045717919496, "learning_rate": 0.13919666727907082, "max_depth": 9, "reg_alpha": 0.43119310111253173, "reg_lambda": 85.2426259114922, "subsample": 0.7988406692188227}, "best_score": -94.71557434668065, "best_score_std": 1.0767072248269711, "time_cost": 354.6087567806244}
