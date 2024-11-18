@@ -139,10 +139,10 @@ def import_string(dotted_path):
 def json_dump(o, fn: FilePath, gz=False):
     if gz:
         with gzip.open(fn, 'wt') as f:
-            json.dump(o, f, cls=monty.json.MontyEncoder)
+            json.dump(o, f, cls=monty.json.MontyEncoder, indent=2)
     else:
         with open(fn, "w") as f:
-            json.dump(o, f, cls=monty.json.MontyEncoder)
+            json.dump(o, f, cls=monty.json.MontyEncoder, indent=2)
 
 
 def json_load(fn: FilePath, warning=False, disable_monty=False):

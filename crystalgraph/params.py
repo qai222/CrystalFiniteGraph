@@ -7,3 +7,5 @@ _default_CNN = CrystalNN(
     x_diff_weight=3.0,
     porous_adjustment=True,
 )
+
+ENV_CRYSTALGRAPH_DATA_DIR = "CRYSTALGRAPH_DATA_DIR"
