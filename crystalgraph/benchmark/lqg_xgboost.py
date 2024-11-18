@@ -111,15 +111,15 @@ class LqgXGBoost(BenchmarkModel):
         reg_final = self.get_reg(**bscv_data['best_parameters'])
         cv = KFold(5, random_state=self.benchmark_model_params.cv_random_state, shuffle=True)
         final_scores = cross_val_score(
-            reg_final, X_train, y_train,
+            reg_final, X_train_selected, y_train,
             scoring=self.benchmark_model_params.scoring,
             cv=cv, n_jobs=-1, verbose=verbose
         )
         final_scores = np.absolute(final_scores)  # return MAE if scoring was NMAE
 
         scorer = get_scorer(self.benchmark_model_params.scoring)
-        reg_final.fit(X_train, y_train)
-        test_score = scorer(reg_final, X_test, y_test)
+        reg_final.fit(X_train_selected, y_train)
+        test_score = scorer(reg_final, X_test[features_used], y_test)
         test_score = np.absolute(test_score)
 
         self.benchmark_model_results = LqgXGBoostResults(
@@ -129,8 +129,8 @@ class LqgXGBoost(BenchmarkModel):
             bscv_data=bscv_data,
         )
 
-        y_train_pred = pd.DataFrame(reg.predict(X_train))
-        y_test_pred = pd.DataFrame(reg.predict(X_test))
+        y_train_pred = pd.DataFrame(reg.predict(X_train_selected))
+        y_test_pred = pd.DataFrame(reg.predict(X_test[features_used]))
 
         json_dump(self.model_dump(), os.path.join(self.work_dir, "trained_model.json"))
         X_train.to_csv(os.path.join(self.work_dir, "X_train.csv"), index=False)
