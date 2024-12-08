@@ -53,7 +53,7 @@ class LqgXGBoost(BenchmarkModel):
 
     benchmark_model_results: Optional[LqgXGBoostResults] = None
 
-    def get_reg(self, **kwargs):
+    def get_reg(self, **kwargs) -> xgb.XGBRegressor:
         reg = xgb.XGBRegressor(
             random_state=self.benchmark_model_params.random_state_model,
             n_estimators=self.benchmark_model_params.n_estimators,
@@ -117,6 +117,8 @@ class LqgXGBoost(BenchmarkModel):
         )
         final_scores = np.absolute(final_scores)  # return MAE if scoring was NMAE
 
+        reg_final.save_model(os.path.join(self.work_dir, "saved_model.json"))
+
         scorer = get_scorer(self.benchmark_model_params.scoring)
         reg_final.fit(X_train_selected, y_train)
         test_score = scorer(reg_final, X_test[features_used], y_test)
@@ -129,8 +131,8 @@ class LqgXGBoost(BenchmarkModel):
             bscv_data=bscv_data,
         )
 
-        y_train_pred = pd.DataFrame(reg.predict(X_train_selected))
-        y_test_pred = pd.DataFrame(reg.predict(X_test[features_used]))
+        y_train_pred = pd.DataFrame(reg_final.predict(X_train_selected))
+        y_test_pred = pd.DataFrame(reg_final.predict(X_test[features_used]))
 
         json_dump(self.model_dump(), os.path.join(self.work_dir, "trained_model.json"))
         X_train.to_csv(os.path.join(self.work_dir, "X_train.csv"), index=False)

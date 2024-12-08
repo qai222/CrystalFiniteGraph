@@ -1,0 +1,82 @@
+{
+  "dataset": {
+    "dataset_name": "zeolite",
+    "dataset_path": "../data/zeolite",
+    "structure_extension": "cssr",
+    "structure_folder_name": "cssr",
+    "lqg_feat_csv": "data_feat.csv",
+    "target_csv": "data_target.csv",
+    "target_name": "ASA_A^2:"
+  },
+  "benchmark_model_name": "LQG-XGBoost",
+  "benchmark_model_params": {
+    "dataset_split_random_state": 42,
+    "cv_random_state": 43,
+    "random_state_model": 44,
+    "bscv_random_state": 45,
+    "booster": "gbtree",
+    "objective": "reg:absoluteerror",
+    "n_estimators": 200,
+    "min_feature_selected": 30,
+    "scoring": "neg_mean_absolute_error",
+    "bscv_iter": 50
+  },
+  "benchmark_model_results": {
+    "test_mae": 84.57013895197385,
+    "train_cv_mae": [
+      87.13565949484813,
+      88.32788963267019,
+      87.5293953193731,
+      87.20498495007479,
+      85.13545339761966
+    ],
+    "selected_features": [
+      "algebraic_connectivity",
+      "average_shortest_path_length",
+      "barycenter_size",
+      "betweenness_centrality_max",
+      "betweenness_centrality_mean",
+      "betweenness_centrality_min",
+      "betweenness_centrality_std",
+      "constraints_mean",
+      "constraints_std",
+      "cycle_sum_count_52",
+      "cycle_sum_count_61",
+      "cycle_sum_count_62",
+      "cycle_sum_count_63",
+      "cycle_sum_count_64",
+      "cycle_sum_count_87",
+      "cycle_sum_count_112",
+      "degree_centrality_max",
+      "global_efficiency",
+      "graph_energy",
+      "is_neighbor_regular",
+      "labelled_edge_count_13",
+      "labelled_edge_count_14",
+      "local_efficiency",
+      "maximum_eccentricity",
+      "neighbor_degree_count_3",
+      "neighbor_degree_count_4",
+      "num_cycle_basis",
+      "square_clustering_max",
+      "square_clustering_mean",
+      "square_clustering_min",
+      "square_clustering_std",
+      "wiener_index"
+    ],
+    "bscv_data": {
+      "best_parameters": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.11389208361896538,
+        "max_depth": 10,
+        "reg_alpha": 1e-06,
+        "reg_lambda": 1000.0,
+        "subsample": 0.8894343639418678
+      },
+      "best_score": -87.06667655891718,
+      "best_score_std": 1.0543507788141135,
+      "time_cost": 542.943621399987
+    }
+  },
+  "work_dir": "zeolite/ASA_A^2/LqgXGBoost"
+}

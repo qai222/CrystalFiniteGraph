@@ -1,0 +1,31 @@
+{
+  "dataset": {
+    "dataset_name": "zeolite",
+    "dataset_path": "../data/zeolite",
+    "structure_extension": "cssr",
+    "structure_folder_name": "cssr",
+    "lqg_feat_csv": "data_feat.csv",
+    "target_csv": "data_target.csv",
+    "target_name": "ASA_A^2:"
+  },
+  "benchmark_model_name": "Dummy",
+  "benchmark_model_params": {
+    "dataset_split_random_state": 42,
+    "cv_random_state": 43,
+    "random_state_model": 44,
+    "bscv_random_state": 45,
+    "strategy": "mean",
+    "scoring": "neg_mean_absolute_error"
+  },
+  "benchmark_model_results": {
+    "test_mae": 209.92329232748284,
+    "train_cv_mae": [
+      212.36954356701676,
+      210.4170245783026,
+      210.78810786449336,
+      210.4617890618687,
+      207.51809264593402
+    ]
+  },
+  "work_dir": "zeolite/ASA_A^2/DummyModel"
+}

@@ -1,0 +1,31 @@
+{
+  "dataset": {
+    "dataset_name": "zeolite",
+    "dataset_path": "../data/zeolite",
+    "structure_extension": "cssr",
+    "structure_folder_name": "cssr",
+    "lqg_feat_csv": "data_feat.csv",
+    "target_csv": "data_target.csv",
+    "target_name": "Density:"
+  },
+  "benchmark_model_name": "Dummy",
+  "benchmark_model_params": {
+    "dataset_split_random_state": 42,
+    "cv_random_state": 43,
+    "random_state_model": 44,
+    "bscv_random_state": 45,
+    "strategy": "mean",
+    "scoring": "neg_mean_absolute_error"
+  },
+  "benchmark_model_results": {
+    "test_mae": 0.13392838382157565,
+    "train_cv_mae": [
+      0.1329089947073337,
+      0.1358580992170508,
+      0.1336254610443958,
+      0.13427559614974158,
+      0.1328703195284469
+    ]
+  },
+  "work_dir": "zeolite/Density/DummyModel"
+}

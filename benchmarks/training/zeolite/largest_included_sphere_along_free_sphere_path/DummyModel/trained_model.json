@@ -1,0 +1,31 @@
+{
+  "dataset": {
+    "dataset_name": "zeolite",
+    "dataset_path": "../data/zeolite",
+    "structure_extension": "cssr",
+    "structure_folder_name": "cssr",
+    "lqg_feat_csv": "data_feat.csv",
+    "target_csv": "data_target.csv",
+    "target_name": "largest_included_sphere_along_free_sphere_path"
+  },
+  "benchmark_model_name": "Dummy",
+  "benchmark_model_params": {
+    "dataset_split_random_state": 42,
+    "cv_random_state": 43,
+    "random_state_model": 44,
+    "bscv_random_state": 45,
+    "strategy": "mean",
+    "scoring": "neg_mean_absolute_error"
+  },
+  "benchmark_model_results": {
+    "test_mae": 1.4043783782852985,
+    "train_cv_mae": [
+      1.3946918674092066,
+      1.4127830051404981,
+      1.3872231337344954,
+      1.4088292889720386,
+      1.4005881107831168
+    ]
+  },
+  "work_dir": "zeolite/largest_included_sphere_along_free_sphere_path/DummyModel"
+}

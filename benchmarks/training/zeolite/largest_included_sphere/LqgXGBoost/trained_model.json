@@ -1,0 +1,88 @@
+{
+  "dataset": {
+    "dataset_name": "zeolite",
+    "dataset_path": "../data/zeolite",
+    "structure_extension": "cssr",
+    "structure_folder_name": "cssr",
+    "lqg_feat_csv": "data_feat.csv",
+    "target_csv": "data_target.csv",
+    "target_name": "largest_included_sphere"
+  },
+  "benchmark_model_name": "LQG-XGBoost",
+  "benchmark_model_params": {
+    "dataset_split_random_state": 42,
+    "cv_random_state": 43,
+    "random_state_model": 44,
+    "bscv_random_state": 45,
+    "booster": "gbtree",
+    "objective": "reg:absoluteerror",
+    "n_estimators": 200,
+    "min_feature_selected": 30,
+    "scoring": "neg_mean_absolute_error",
+    "bscv_iter": 50
+  },
+  "benchmark_model_results": {
+    "test_mae": 0.7044430882184007,
+    "train_cv_mae": [
+      0.7145588370997938,
+      0.7138699301916263,
+      0.7224210227475958,
+      0.7281019977820747,
+      0.7156133252851272
+    ],
+    "selected_features": [
+      "algebraic_connectivity",
+      "average_shortest_path_length",
+      "barycenter_size",
+      "betweenness_centrality_max",
+      "betweenness_centrality_mean",
+      "betweenness_centrality_min",
+      "betweenness_centrality_std",
+      "constraints_mean",
+      "constraints_std",
+      "cycle_sum_count_62",
+      "degree_centrality_std",
+      "global_efficiency",
+      "graph_energy",
+      "is_neighbor_regular",
+      "labelled_edge_count_1",
+      "labelled_edge_count_4",
+      "labelled_edge_count_5",
+      "labelled_edge_count_7",
+      "labelled_edge_count_10",
+      "labelled_edge_count_11",
+      "labelled_edge_count_13",
+      "labelled_edge_count_14",
+      "labelled_edge_count_15",
+      "labelled_edge_count_16",
+      "labelled_edge_count_17",
+      "labelled_edge_count_19",
+      "labelled_edge_count_22",
+      "labelled_edge_count_23",
+      "labelled_edge_count_25",
+      "local_efficiency",
+      "maximum_eccentricity",
+      "neighbor_degree_count_4",
+      "num_cycle_basis",
+      "square_clustering_max",
+      "square_clustering_mean",
+      "square_clustering_min",
+      "square_clustering_std",
+      "wiener_index"
+    ],
+    "bscv_data": {
+      "best_parameters": {
+        "colsample_bytree": 0.9195298319376825,
+        "learning_rate": 0.22015808482395696,
+        "max_depth": 10,
+        "reg_alpha": 1.0,
+        "reg_lambda": 1000.0,
+        "subsample": 1.0
+      },
+      "best_score": -0.7189130226212435,
+      "best_score_std": 0.005514037444771274,
+      "time_cost": 552.2567319000082
+    }
+  },
+  "work_dir": "zeolite/largest_included_sphere/LqgXGBoost"
+}
