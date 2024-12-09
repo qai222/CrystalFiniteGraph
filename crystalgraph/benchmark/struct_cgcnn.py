@@ -291,7 +291,7 @@ class StructCgcnn(BenchmarkModel):
                     target_var = Variable(target_normed)
 
                 # compute output
-                output = model(*input_var)
+                output, _ = model(*input_var)
 
                 # print(output.shape, target_var.shape)
                 loss = criterion(output, target_var)
@@ -352,7 +352,7 @@ class StructCgcnn(BenchmarkModel):
                     target_var = Variable(target_normed)
 
                 # compute output
-                output = model(*input_var)
+                output, _ = model(*input_var)
 
                 loss = criterion(output, target_var)
 
@@ -360,10 +360,10 @@ class StructCgcnn(BenchmarkModel):
                 losses.update(loss.data.cpu().item(), target.size(0))
                 mae_errors.update(mae_error, target.size(0))
 
-            logger.info('Epoch [{0}] Validate: [{1}/{2}], Loss {loss.val:.4f} ({loss.avg:.4f}), MAE ' \
-                        '{mae_errors.val:.3f} ({mae_errors.avg:.3f})'.format(
-                epoch_counter + 1, bn + 1, len(valid_loader), loss=losses, mae_errors=mae_errors
-            ))
+                logger.info('Epoch [{0}] Validate: [{1}/{2}], Loss {loss.val:.4f} ({loss.avg:.4f}), MAE ' \
+                            '{mae_errors.val:.3f} ({mae_errors.avg:.3f})'.format(
+                    epoch_counter + 1, bn + 1, len(valid_loader), loss=losses, mae_errors=mae_errors
+                ))
 
         model.train()
 
@@ -408,7 +408,7 @@ class StructCgcnn(BenchmarkModel):
                     target_var = Variable(target_normed)
 
                 # compute output
-                output = model(*input_var)
+                output, _ = model(*input_var)
 
                 loss = criterion(output, target_var)
 
@@ -441,7 +441,7 @@ class StructCgcnn(BenchmarkModel):
 
     def train_and_eval(self):
         if self.benchmark_model_params.loss == 'mse':
-            criterion = nn.MSELoss(reduction='mean')
+            criterion = nn.MSELoss()
         else:
             raise NotImplementedError
         writer = SummaryWriter(log_dir=self.work_dir)

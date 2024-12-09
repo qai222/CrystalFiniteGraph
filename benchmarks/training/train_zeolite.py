@@ -39,7 +39,7 @@ def train_dummy(dataset: BenchmarkDataset):
 
 def train_cgcnn(dataset: BenchmarkDataset):
     model_params = StructCgcnnParams(
-        batch_size=128
+        batch_size=64
     )
     model = StructCgcnn(
         dataset=dataset,
@@ -60,8 +60,8 @@ def train_all(training_functions: list):
             dataset = BenchmarkDataset(
                 dataset_name="zeolite",
                 dataset_path="../data/zeolite",
-                structure_extension="cssr",
-                structure_folder_name="cssr",
+                structure_extension="cif",
+                structure_folder_name="cif",
                 lqg_feat_csv="data_feat.csv",
                 target_csv="data_target.csv",
                 target_name=target_name
