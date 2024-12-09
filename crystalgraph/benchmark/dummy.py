@@ -35,7 +35,7 @@ class DummyModel(BenchmarkModel):
         )
 
     def train_and_eval(self, verbose=10):
-        X, y, X_train, X_test, y_train, y_test = self.load_lqg_xy()
+        X, y, X_train, X_test, y_train, y_test, X_ind_train, X_ind_test = self.load_lqg_xy()
         cv = KFold(5, random_state=self.benchmark_model_params.cv_random_state, shuffle=True)
         reg = self.get_reg()
         final_scores = cross_val_score(

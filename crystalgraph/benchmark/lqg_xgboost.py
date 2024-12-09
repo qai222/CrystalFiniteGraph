@@ -64,7 +64,7 @@ class LqgXGBoost(BenchmarkModel):
         return reg
 
     def train_and_eval(self, verbose=10):
-        X, y, X_train, X_test, y_train, y_test = self.load_lqg_xy()
+        X, y, X_train, X_test, y_train, y_test, X_ind_train, X_ind_test = self.load_lqg_xy()
 
         rfecv = self.select_features(X_train, y_train, verbose=verbose)
         plot_rfecv(rfecv, self.benchmark_model_params.min_feature_selected, self.work_dir)

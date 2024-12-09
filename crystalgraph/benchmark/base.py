@@ -89,10 +89,12 @@ class BenchmarkModel(BaseModel):
         # first column is structure identifier
         X = df_feat.iloc[:, 1:]
         y = df_target[self.dataset.target_name]
+        X_indices = df_feat.iloc[:, 0].tolist()
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y,
-                                                            random_state=self.benchmark_model_params.dataset_split_random_state)
-        return X, y, X_train, X_test, y_train, y_test
+        X_train, X_test, y_train, y_test, X_ind_train, X_ind_test = train_test_split(
+            X, y, X_indices, random_state=self.benchmark_model_params.dataset_split_random_state,
+        )
+        return X, y, X_train, X_test, y_train, y_test, X_ind_train, X_ind_test
 
 
 def plot_rfecv(rfecv: RFECV, min_features_to_select: int, work_dir: str):
